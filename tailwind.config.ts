@@ -1,30 +1,46 @@
-import type { Config } from 'tailwindcss'
+/** @type {import('tailwindcss').Config} */
 
-const config: Config = {
+module.exports = {
   content: ['./src/**/*.tsx'],
   theme: {
     extend: {
+      gridTemplateColumns: {
+        app: 'minmax(18rem, 20rem) 1fr',
+        profile: 'max-content 1fr max-content',
+        form: 'minmax(7.5rem, 17.5rem) minmax(25rem, 1fr) minmax(0, 15rem)',
+      },
+
+      borderWidth: {
+        6: '6px',
+      },
+
       colors: {
-        rocket: '#8257e6',
         violet: {
           25: '#fcfaff',
         },
       },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+
+      maxWidth: {
+        app: '700px',
       },
-      gridTemplateColumns: {
-        app: 'minmax(18rem, 20rem) 1fr',
-        profile: 'max-content 1fr min-content',
-        form: 'minmax(7.5rem, 17.5rem) minmax(25rem, 1fr) minmax(0, 15rem)',
+
+      keyframes: {
+        slideDownAndFade: {
+          from: { opacity: 0, transform: 'translateY(-2px)' },
+          to: { opacity: 1, transform: 'translateY(0)' },
+        },
+        // slideUpAndFade: {
+        //   from: { opacity: 1 },
+        //   to: { opacity: 0 },
+        // },
       },
-      borderWidth: {
-        6: '6px',
+
+      animation: {
+        slideDownAndFade:
+          'slideDownAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
+        // slideUpAndFade: 'slideUpAndFade 1s linear',
       },
     },
   },
   plugins: [],
 }
-export default config
